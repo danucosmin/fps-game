@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
 {
     private Animator anim;
     private AudioSource _AudioSource;
+    public Image CrossHair;
     public Text ammoText;
     public Text fireSelectorText;
     public float range = 100f; // Maximum bullet range
@@ -172,6 +173,9 @@ public class Weapon : MonoBehaviour
             //isAiming = true;
             //Debug.Log("tintesc");
             FovChange.fieldOfView = Mathf.Lerp(FovChange.fieldOfView, fovAmount, Time.deltaTime * fovSmoothAmount); //fov decrease on aiming
+
+            CrossHair.enabled = false;
+            
         }
         else
         {
@@ -182,7 +186,7 @@ public class Weapon : MonoBehaviour
             // Debug.Log("nu  tintesc");
 
             FovChange.fieldOfView = Mathf.Lerp(FovChange.fieldOfView, 60f, Time.deltaTime * fovSmoothAmount);// fov restored on releasing m2
-
+            CrossHair.enabled = true;
 
         }
     }
